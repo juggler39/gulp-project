@@ -1,13 +1,18 @@
-
 module.exports = {
     mode: 'production',
-    entry: {
-        main: ['./src/app.js'],
-    },
-
     output: {
-        filename: './dist/[name].js',
+        filename: '[name].js',
     },
-
-
+    devtool: 'source-map',
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+        ],
+    },
 };
